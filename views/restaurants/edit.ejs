@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Edit Restaurant</h1>
+      <form action="/restaurants/update/<%= restaurant._id %>" method="post">
+        <p>Name:</p><input type="text" value="<%= restaurant.name %>" name="name">
+        <p>Description:</p><textarea name="description"><%= restaurant.description %></textarea>
+        <p>Rating:</p><input type="text" name="rating" value="<%= restaurant.rating %>">
+        <p>Open?:</p><input type="text" name="open" value="<%= restaurant.open %>">
+        <input type="submit" value="submit resto">
+      </form>
+    </div>
+  </body>
+</html>

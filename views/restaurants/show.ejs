@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Restaurants</h1>
+      <h3><%= restaurant.name %></h3>
+      <p><%= restaurant.description %></p>
+      <p><%= restaurant.rating%></p>
+      <p><%= restaurant.open%></p>
+      <p><a href="/restaurants/edit/<%=restaurant._id%>">Edit Restaurant</a></p>
+      <h3><a href="/restaurants">Restaurant List</a></h3>
+      <form action="/restaurants/delete/<%=restaurant._id%>" method="post">
+        <button type="submit">DELETE THIS RESTAURANT</button>
+      </form>
+    </div>
+  </body>
+</html>

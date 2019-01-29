@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Restaurants</h1>
+      <h3><a href="/restaurants/create">Create Restaurant</a></h3>
+      <ul>
+      <% for(let i=0; i < restaurants.length; i++) { %>
+        <li><a href="/restaurants/show/<%= restaurants[i]._id%>"><%= restaurants[i].name %></a></li>
+        <li><%= restaurants[i].description %></li>
+        <li><%= restaurants[i].rating %></li>
+        <li><%= restaurants[i].open %></li>
+       <% } %>
+      </ul>
+    </div>
+  </body>
+</html>
