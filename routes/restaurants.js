@@ -5,4 +5,6 @@ const restaurant = require('../controllers/RestaurantController.js')
 
 router.get('/create', restaurant.create)
 
+router.post('/save', restaurant.save)
+
 module.exports = router

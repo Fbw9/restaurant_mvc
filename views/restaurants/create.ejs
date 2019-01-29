@@ -3,6 +3,14 @@
   <head>
   </head>
   <body>
-    <h1>FORM</h1>
+    <div class="container">
+      <form action="/restaurants/save" method="post">
+        <p>Name:</p><input type="text" name="name">
+        <p>Description:</p><textarea name="description"></textarea>
+        <p>Rating:</p><input type="text" name="rating">
+        <p>Open?:</p><input type="text" name="open">
+        <input type="submit" value="submit resto">
+      </form>
+    </div>
   </body>
 </html>
