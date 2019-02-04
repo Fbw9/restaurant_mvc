@@ -2,6 +2,16 @@ const mongoose = require('mongoose')
 const restaurantSchema = require('../models/Restaurant')
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 
+require('dotenv').config()
+const cloudinary = require('cloudinary')
+
+//configure cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+})
+
 const restaurantController = {}
 
 //LIST ALL
@@ -20,12 +30,17 @@ restaurantController.create = (req, res) => {
   res.render('../views/restaurants/create')
 }
 
-restaurantController.save = (req, res) => {
+restaurantController.save = async (req, res) => {
+  console.log(req.file)
+  //upload to cloudinary
+  let cloudinaryUpload = await cloudinary.v2.uploader.upload(req.file.path)
+  console.log(cloudinaryUpload)
   let restaurant = new Restaurant({
     name: req.body.name,
     description: req.body.description,
     rating: req.body.rating,
-    open: req.body.open
+    open: req.body.open,
+    image: cloudinaryUpload.secure_url
   })
   restaurant.save((error) => {
     if(error) {

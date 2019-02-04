@@ -2,13 +2,14 @@ const express = require('express')
 const router = express.Router()
 
 const restaurant = require('../controllers/RestaurantController.js')
+const upload = require('../handlers/multer')
 
 //Get all restaurants
 router.get('/', restaurant.list)
 //Create restaurant
 router.get('/create', restaurant.create)
 //Save restaurant
-router.post('/save', restaurant.save)
+router.post('/save', upload.single('image'), restaurant.save)
 //Get single restaurant by id
 router.get('/show/:id', restaurant.show)
 //Edit restaurant

@@ -9,6 +9,7 @@
       <p><%= restaurant.description %></p>
       <p><%= restaurant.rating%></p>
       <p><%= restaurant.open%></p>
+      <img src="<%= restaurant.image %>" alt="">
       <p><a href="/restaurants/edit/<%=restaurant._id%>">Edit Restaurant</a></p>
       <h3><a href="/restaurants">Restaurant List</a></h3>
       <form action="/restaurants/delete/<%=restaurant._id%>" method="post">

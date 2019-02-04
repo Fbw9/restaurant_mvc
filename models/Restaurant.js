@@ -18,6 +18,8 @@ const restaurantSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  image: {
+  },
   updated_at: {
     type: Date,
     default: Date.now
