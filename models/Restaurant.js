@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+require('./Cuisine')
 
 const restaurantSchema = new mongoose.Schema({
   name: {
@@ -18,6 +19,7 @@ const restaurantSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  cuisine: [{ type: mongoose.Schema.ObjectId, ref: "Cuisine"}],
   image: {
   },
   updated_at: {

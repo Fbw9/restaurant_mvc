@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const restaurantSchema = require('../models/Restaurant')
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
+const cuisineSchema = require('../models/Cuisine')
+const Cuisine = mongoose.model('Cuisine', cuisineSchema)
 
 require('dotenv').config()
 const cloudinary = require('cloudinary')
@@ -27,20 +29,27 @@ restaurantController.list = (req, res) => {
 
 //CREATE METHOD
 restaurantController.create = (req, res) => {
-  res.render('../views/restaurants/create')
+  Cuisine.find({}).exec((error, cuisines) => {
+     res.render('../views/restaurants/create', {cuisines: cuisines})
+  })
 }
 
 restaurantController.save = async (req, res) => {
-  console.log(req.file)
   //upload to cloudinary
   let cloudinaryUpload = await cloudinary.v2.uploader.upload(req.file.path)
-  console.log(cloudinaryUpload)
   let restaurant = new Restaurant({
     name: req.body.name,
     description: req.body.description,
     rating: req.body.rating,
     open: req.body.open,
     image: cloudinaryUpload.secure_url
+  })
+  console.log(req.body.cuisines)
+  let ids = req.body.cuisines
+  ids.forEach(id => {
+    mongoose.Types.ObjectId(id)
+    console.log(id)
+    restaurant.cuisine.push(id)
   })
   restaurant.save((error) => {
     if(error) {
@@ -55,7 +64,7 @@ restaurantController.save = async (req, res) => {
 
 //SHOW METHOD
 restaurantController.show = (req, res) => {
-  Restaurant.findOne({_id: req.params.id}).exec((error, restaurant) => {
+  Restaurant.findOne({_id: req.params.id}).populate('cuisine').exec((error, restaurant) => {
     if(error) {
       console.log('Error:', error)
     } else {

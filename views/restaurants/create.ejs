@@ -10,6 +10,11 @@
         <p>Description:</p><textarea name="description"></textarea>
         <p>Rating:</p><input type="text" name="rating">
         <p>Open?:</p><input type="text" name="open">
+        <p>Ingredients:</p>
+        <% for(let i=0; i < cuisines.length; i++) { %>
+        <input type="checkbox" name="cuisines" value="<%= cuisines[i]._id %>"><%= cuisines[i].name %><br>
+        <% } %>
+
         <input type="file" name="image" />
         <input type="submit" value="submit resto">
       </form>

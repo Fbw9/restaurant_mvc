@@ -9,6 +9,10 @@
       <p><%= restaurant.description %></p>
       <p><%= restaurant.rating%></p>
       <p><%= restaurant.open%></p>
+      <% let cuisineArray = restaurant.cuisine %>
+      <% for(let i=0; i < cuisineArray.length; i++) { %>
+        <p><%= cuisineArray[i].name %></p>
+      <% } %>
       <img src="<%= restaurant.image %>" alt="">
       <p><a href="/restaurants/edit/<%=restaurant._id%>">Edit Restaurant</a></p>
       <h3><a href="/restaurants">Restaurant List</a></h3>
