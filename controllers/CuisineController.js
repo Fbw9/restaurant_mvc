@@ -9,7 +9,7 @@ seeder.connect('mongodb://heroku_tslqfhrg:3tt03cglmto1ke1mlt8bmp1kmt@ds139775.ml
 
   // Load Mongoose models
   seeder.loadModels([
-    '../restaurant_mvc/models/Cuisine.js'
+    'models/Cuisine.js'
   ]);
 
   // Clear specified collections
