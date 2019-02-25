@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const restaurants = require('./routes/restaurants')
 
 mongoose
-  .connect(`mongodb://localhost:27017/restos2`, { useNewUrlParser: true })
+  .connect(`mongodb://heroku_tslqfhrg:3tt03cglmto1ke1mlt8bmp1kmt@ds139775.mlab.com:39775/heroku_tslqfhrg`, { useNewUrlParser: true })
   .then(console.log('Successful connection to database'))
   .catch(error => {
     console.log(`The following error occurred: ${error.message}`)
@@ -25,7 +25,7 @@ mongoose
     res.render('index')
   })
 
-  app.listen(3000, () => {
+  app.listen( process.env.PORT || 3000, () => {
     console.log('Listening at port 3000')
   })
 
