@@ -7,8 +7,10 @@ const app = express()
 const mongoose = require('mongoose')
 const restaurants = require('./routes/restaurants')
 
+let url = process.env.MONGODB_URI
+
 mongoose
-  .connect(`${MONGODB_URI}`, { useNewUrlParser: true })
+  .connect(url, { useNewUrlParser: true })
   .then(console.log('Successful connection to database'))
   .catch(error => {
     console.log(`The following error occurred: ${error.message}`)

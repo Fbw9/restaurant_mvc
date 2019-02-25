@@ -4,8 +4,10 @@ const Cuisine = mongoose.model('Cuisine', cuisineSchema)
 
 const seeder = require('mongoose-seed');
 
+let url = process.env.MONGODB_URI
+
 // Connect to MongoDB via Mongoose
-seeder.connect(`${MONGODB_URI}`, function() {
+seeder.connect(url, function() {
 
   // Load Mongoose models
   seeder.loadModels([
