@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const restaurants = require('./routes/restaurants')
 
 mongoose
-  .connect(`mongodb://localhost:27017/restaurants2`, { useNewUrlParser: true })
+  .connect(`${MONGODB_URI}`, { useNewUrlParser: true })
   .then(console.log('Successful connection to database'))
   .catch(error => {
     console.log(`The following error occurred: ${error.message}`)
