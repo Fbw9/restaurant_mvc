@@ -5,7 +5,7 @@ const Cuisine = mongoose.model('Cuisine', cuisineSchema)
 const seeder = require('mongoose-seed');
 
 // Connect to MongoDB via Mongoose
-seeder.connect('mongodb://heroku_tslqfhrg:3tt03cglmto1ke1mlt8bmp1kmt@ds139775.mlab.com:39775/heroku_tslqfhrg', function() {
+seeder.connect('mongodb://localhost:27017/restaurants2', function() {
 
   // Load Mongoose models
   seeder.loadModels([
