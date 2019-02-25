@@ -9,7 +9,7 @@ seeder.connect('mongodb://localhost:27017/restos2', function() {
 
   // Load Mongoose models
   seeder.loadModels([
-    '../models/Cuisine.js'
+    'models/Cuisine.js'
   ]);
 
   // Clear specified collections
